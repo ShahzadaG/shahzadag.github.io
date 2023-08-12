@@ -89,8 +89,14 @@ export const SmartAzanClock = {
         if (
             this.settings.deviceSettings.mode === 'D'
             ||
-            (this.settings.deviceSettings.mode === 'A' && this.currentVakit.name === 'Isha'
-                && this.output.hourAngle >= this.output.oneThirdAngle)
+            (this.settings.deviceSettings.mode === 'A'
+                &&
+                (
+                    this.currentVakit.name === 'Fajr'
+                    ||
+                    this.currentVakit.name === 'Isha'
+                )
+            )
         ) {
             this.output.dim = 1;
             this.output.clockOpacity = 0.25;
