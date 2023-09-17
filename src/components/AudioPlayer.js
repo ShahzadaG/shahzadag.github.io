@@ -10,6 +10,8 @@ export default function AudioPlayer() {
     const audioTitle = useRef(null)
     const playButtonDiv = useRef(null)
     const audioPlayer = useRef(null)
+    const pauseButton = useRef(null)
+    const endButton = useRef(null)
 
     useEffect(() => {
 
@@ -81,7 +83,25 @@ export default function AudioPlayer() {
         audioPlayer.current.currentTime = 0;
         playerDiv.current.style.visibility = 'hidden';
         playButtonDiv.current.style.visibility = 'hidden';
+        endButton.current.style.visibility = 'hidden';
         audioTitle.current.innerHTML = '';
+    }
+
+    const togglePause = () => {
+        if (audioPlayer.current.paused)
+            playAudio();
+        else
+            audioPlayer.current.pause();
+    }
+
+    const audioPaused = () => {
+        pauseButton.current.innerHTML = 'Continue';
+        endButton.current.style.visibility = 'visible';
+    }
+
+    const audioPlayed = () => {
+        pauseButton.current.innerHTML = 'Pause';
+        endButton.current.style.visibility = 'hidden';
     }
 
     const playAudio = () => {
@@ -92,10 +112,18 @@ export default function AudioPlayer() {
 
     return (
         <>
-            <div ref={playerDiv} onClick={stopAudio} className="audioButtonDiv">
-                <div className='d-flex flex-column gap-2 m-4 col-3 flex-nowrap'>
-                    <div className="text-center"><audio controls id="audioPlayer" src='' ref={audioPlayer} onEnded={stopAudio} /></div>
-                    <div className="small text-light text-center" ref={audioTitle}></div>
+            <div ref={playerDiv} className="audioButtonDiv">
+
+
+                <div className='d-flex flex-row justify-content-start p-3'>
+                    <div className='d-flex flex-column align-items-center gap-3'>
+                        <div className="text-light text-center" ref={audioTitle}></div>
+                        <div>
+                            <audio controls id="audioPlayer" src='' ref={audioPlayer} onPlay={audioPlayed} onPause={audioPaused} onEnded={stopAudio} />
+                        </div>
+                        <div><button ref={pauseButton} className='btn btn-lg btn-light px-5' onClick={togglePause}></button></div>
+                        <div><button ref={endButton} className='btn btn-lg btn-danger px-5' onClick={stopAudio}>End</button></div>
+                    </div>
                 </div>
             </div>
             <div ref={playButtonDiv} onClick={playAudio} className="audioButtonDiv">
