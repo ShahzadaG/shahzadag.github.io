@@ -12,6 +12,7 @@ import audio11 from '../mp3s/11.mp3';
 import audio12 from '../mp3s/12.mp3';
 import audio13 from '../mp3s/13.mp3';
 import audio14 from '../mp3s/14.mp3';
+import audio15 from '../mp3s/15.mp3';
 import audio101 from '../mp3s/101.mp3';
 import audio102 from '../mp3s/102.mp3';
 import audio103 from '../mp3s/103.mp3';
@@ -33,6 +34,7 @@ export const Audios = [
     { id: 12, source: audio12, name: 'Madina Fajr Azan by Shaykh Surayhi (4:54)', isAzan: false, isFajrAzan: true, isAlarm: false },
     { id: 13, source: audio13, name: 'Fajr Azan by Shaykh Ali Ahmed Mullah (4:35)', isAzan: false, isFajrAzan: true, isAlarm: false },
     { id: 14, source: audio14, name: 'Muhammad Al-Sharif (3:29)', isAzan: true, isFajrAzan: true, isAlarm: false },
+    { id: 15, source: audio15, name: 'Abbi Adhan', isAzan: true, isFajrAzan: true, isAlarm: false },
     { id: 101, source: audio101, name: 'Bismillahirrahmanirrahim (0:05)', isAzan: true, isFajrAzan: true, isAlarm: true },
     { id: 102, source: audio102, name: 'Soft Beep Sound (0:01)', isAzan: true, isFajrAzan: true, isAlarm: true },
     { id: 103, source: audio103, name: 'As-Salatu Khayrun Minan Nawm (0:28)', isAzan: false, isFajrAzan: false, isAlarm: true }
